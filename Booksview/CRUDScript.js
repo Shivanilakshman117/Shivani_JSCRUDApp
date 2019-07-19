@@ -38,8 +38,9 @@ function InsertIntoTable(BookRecord)
     field5= NewRow.insertCell(4);
     field5.innerHTML=BookRecord.Price;
     field6= NewRow.insertCell(5);
-    field6.innerHTML=`<a onClick="Edit(this)">Edit</a>
-                      <a onClick="Delete(this)">Delete</a>`;// this is a reference to the corresponding td cell
+    field6.innerHTML=`<a class= "EditButton" onClick="Edit(this)">Edit</a>
+                      <a class= "DeleteButton" onClick="Delete(this)">Delete</a>
+                      <a class= "MoreButton" onClick="Delete(this)">Info</a>`;// this is a reference to the corresponding td cell
 }
 
 function ResetForm()
@@ -96,4 +97,9 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+function prepopulate()
+{ 
+    BookRecord = [{BookName:" ", Author:" ", Genre:" ","Synopsi"}]
+}
 
