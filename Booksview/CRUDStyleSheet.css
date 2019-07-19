@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
   }
+  body
+  {
+    font-family: Arial, Helvetica, sans-serif;
+  }
   
   input[type=text], input[type=number], input[type=textarea]
   {
@@ -70,28 +74,66 @@
     background-color:dodgerblue;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: .5em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1.2em;
+    margin: .2em;
     cursor: pointer;
+    border-radius: .5em;
+    width: 5em;
   }
   
-  .UpdateButton
+     
+  .EditButton
   {
-    background-color:blue;
+    background-color:rgba(0, 68, 255, 0.89);
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: .5em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 1.2em;
+    margin: .2em;
     cursor: pointer;
+    border-radius: .5em;
+    width: 5em;
   }
+       
+  .DeleteButton
+  {
+    background-color:rgba(255, 52, 1, 0.938);
+    border: none;
+    color: white;
+    padding: .5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: .2em;
+    cursor: pointer;
+    border-radius: .5em;
+    width: 5em;
+  }
+
+  .MoreButton
+  {
+    background-color:rgba(1, 153, 255, 0.938);
+    border: none;
+    color: white;
+    padding: .5em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: .2em;
+    cursor: pointer;
+    border-radius: .5em;
+    width: 5em;
+  }
+  
   
   .modal {
     position: fixed;
@@ -117,15 +159,15 @@
 }
 .close-button {
     float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
+    width: 1.5em;
+    line-height: 1.5em;
     text-align: center;
     cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
+    border-radius: 1em;
+    background-color:rgba(255, 52, 1, 0.938);
 }
 .close-button:hover {
-    background-color: darkgray;
+    background-color:rgba(255, 52, 1, 0.938);
 }
 .show-modal {
     opacity: 1;
