@@ -4,14 +4,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> CRUD App</title>
         <link rel="Stylesheet" type="text/css" href="CRUDStyleSheet.css">
+        <link rel="Stylesheet" type="text/css" href="Pagination.css">
     </head>
-    <body> 
-        
-       
+    <body onload="Prepopulate();"> 
+        <div class= "topnav">
+            <a href="Signout.html">Sign Out</a>
+        </div>
         <button class="trigger">Add Book</button>
+        <button class="DeleteMultiple">Delete Checked</button>
+        <button onclick="test();">Test</button>
         <div class="modal">
             <div class="modal-content">
-                <span class="close-button">&times;</span>
+                <span class="close-button">&times;</span> 
                 <div class="booksform" id="popform">
                     <form onsubmit = "event.preventDefault(); AddBooks();" autocomplete="off"> <!-- id is added to facilitate js functions.prevent default
                     stops suggestions from cache-->
@@ -28,28 +32,28 @@
                             <input type="text" name = "Genre" id="Genre">
                         </div>
                         <div>
-                            <label>Synopsis</label><br>
-                            <input type="textarea" rows="5" cols="50" name = "Synopsis" id="Synopsis">
+                            <label>Rating</label><br>
+                            <input type="number" name = "Rating" id="Rating">
                         </div>
                         <div>
                             <label>Price</label><br>
-                            <input type="Number" name = "Price" id="Price">
+                            <input type="number" name = "Price" id="Price">
                         </div>  
                         <div>
-                            <input type="submit" value = "Add">
+                            <input type="submit" value = "Done" class="subtrigger">
                         </div>          
                     </form>
-                </div>
+               </div>
             </div>
         </div>
         <table class="book" id="Book">
             <thead>
                 <tr>
-                    <!--<th>S.No</th>-->
+                    <th>S.No</th>
                     <th>Book Name</th>
                     <th>Author</th>
                     <th>Genre</th>
-                    <th>Synopsis</th>
+                    <th>Rating</th>
                     <th>Price</th>
                     <th>Action</th>
                 </tr>
@@ -58,6 +62,49 @@
 
             </tbody>
         </table>
+        <div class="infomodal">
+            <div class="infomodal-content">
+                <span class="close-button2">&times;</span>
+                <div>
+                    <h3>Book Name:</h3>
+                    <p id="BookName2"></p>
+                    <br>
+                </div>
+                <div>
+                    <h3>Author:</h3>
+                    <p id="Author2"></p>
+                    <br>
+                </div>
+                <div>
+                    <h3>Genre:</h3>
+                    <p id="Genre2"></p>
+                    <br>
+                </div>
+                <div>
+                    <h3>Rating:</h3>
+                    <p id="Rating2"></p>
+                    <br>                  
+                </div>
+                <div>
+                    <h3>Price:</h3>
+                    <p id="Price2"></p>
+                    <br>
+                </div>                   
+            </div>
+        </div>
         <script src="CRUDScript.js"></script>
+        <script src="populate.js"></script>
+        <script src="EventsHandling.js"></script>
+
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+          </div>
     </body>
 </html>
