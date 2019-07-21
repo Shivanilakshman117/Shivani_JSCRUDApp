@@ -1,12 +1,40 @@
 * {
     box-sizing: border-box;
   }
+  
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  margin:0;
+
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: orange;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
   body
   {
     font-family: Arial, Helvetica, sans-serif;
+    margin:0;
   }
   
-  input[type=text], input[type=number], input[type=textarea]
+  input[type=text], input[type=number]
   {
     width: 80%;
     padding: 12px 20px;
@@ -35,70 +63,93 @@
     background-color:green;
   }
   div.booksform {
-    border-radius: 5px;
+    border-radius: .4em;
     background-color: #f2f2f2;
-    padding: 20px 10px;
+    padding: 1.2em .8em;
     width:80%;
   }
   .book {
     border-collapse: collapse;
-    width: 80%;
+    width: 85%;
     margin-left:auto;
     margin-right:auto;
+    clear:both;
   }
   
   .book td, .book th {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: .1em solid #ddd;
+    padding: .2em;
+  
+    max-width:15em;
   }
   
   .book tr:nth-child(even){background-color: #f2f2f2;}
    
   .book th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 0.4em;
+    padding-bottom: .6em;
     text-align: left;
     background-color: royalblue;
     color: white;
+    
   }
-  a{
-    cursor: pointer;
-    text-decoration:none;
-    color: #0000ee;
-    margin-right: 4px;
-  }
-
-
+ 
   .trigger
   {
     background-color:dodgerblue;
     border: none;
     color: white;
-    padding: .5em;
+    padding: 1em;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.2em;
-    margin: .2em;
+    margin: 2em 2em 2em 2em;
+    display: block;
+    float:left;
+    font-size: 1em;
     cursor: pointer;
     border-radius: .5em;
-    width: 5em;
+    width: 8em;
+    height:4em;
+    position:relative;
   }
-  
+  .trigger:hover
+  {
+    background-color:rgb(21, 121, 221);
+  }
+  .DeleteMultiple
+  {
+    background-color:red;
+    border: none;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin: 2em;
+    display: block;
+    float:left;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .5em;
+    width:8em;
+    height:4em;
+   
+  }
+  .DeleteMultiple:hover
+  {
+    background-color:rgb(236, 9, 9);
+  }
      
   .EditButton
   {
     background-color:rgba(0, 68, 255, 0.89);
     border: none;
     color: white;
-    padding: .5em;
+    padding: .4em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: .6em;
     margin: .2em;
     cursor: pointer;
-    border-radius: .5em;
+    border-radius: .25em;
     width: 5em;
   }
        
@@ -107,14 +158,14 @@
     background-color:rgba(255, 52, 1, 0.938);
     border: none;
     color: white;
-    padding: .5em;
+    padding: .4em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: .6em;
     margin: .2em;
     cursor: pointer;
-    border-radius: .5em;
+    border-radius: .25em;
     width: 5em;
   }
 
@@ -123,14 +174,14 @@
     background-color:rgba(1, 153, 255, 0.938);
     border: none;
     color: white;
-    padding: .5em;
+    padding: .4em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.2em;
+    font-size: .6em;
     margin: .2em;
     cursor: pointer;
-    border-radius: .5em;
+    border-radius: .25em;
     width: 5em;
   }
   
@@ -175,5 +226,44 @@
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
-
+.infomodal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.infomodal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width:50%;
+  border-radius: 0.5rem;
+}
+.close-button2 {
+  float: right;
+  width: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 1em;
+  background-color:rgba(255, 52, 1, 0.938);
+}
+.close-button2:hover {
+  background-color:rgba(255, 52, 1, 0.938);
+}
+.show-infomodal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
 
