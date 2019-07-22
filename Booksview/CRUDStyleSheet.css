@@ -37,8 +37,8 @@
   input[type=text], input[type=number]
   {
     width: 80%;
-    padding: 12px 20px;
-    margin: 1em 1em;
+    padding: 0.5em;
+    margin: .5em 1em;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -50,16 +50,16 @@
     width: 80%;
     background-color: orange;
     color: white;
-    padding: 14px 20px;
+    padding: 0.5em;
     display: inline-block;
-    margin: 1em 1em;
+    margin: .5em 1em;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     position:relative;
   }
   
-  input[type=submit]:hover {
+  input[type=submit]:hover:not(disabled) {
     background-color:green;
   }
   div.booksform {
@@ -67,6 +67,8 @@
     background-color: #f2f2f2;
     padding: 1.2em .8em;
     width:80%;
+    height:auto;
+    position: relative;
   }
   .book {
     border-collapse: collapse;
@@ -205,7 +207,8 @@
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    width:50%;
+    width:30%;
+    height:auto;
     border-radius: 0.5rem;
 }
 .close-button {
@@ -214,7 +217,7 @@
     line-height: 1.5em;
     text-align: center;
     cursor: pointer;
-    border-radius: 1em;
+    border-radius: .4em;
     background-color:rgba(255, 52, 1, 0.938);
 }
 .close-button:hover {
@@ -266,4 +269,15 @@
   transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+
+#RatingError, #PriceError
+{
+  font-size: .8em;
+  color:red;
+  }
+
+  label
+  {
+    font-size:.8em;
+  }
 
