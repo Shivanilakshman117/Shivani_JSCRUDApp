@@ -1,6 +1,15 @@
+select
+{
+  margin:2em 8em 2em 8em;
+  display: block;
+  
+}
+
+
 .pagination {
-    display: inline-block;
-    margin:4em;
+    display: block;
+    margin:2em 8em 2em 8em;
+    
   }
   
   .pagination a {
