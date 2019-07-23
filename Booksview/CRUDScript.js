@@ -1,5 +1,5 @@
 var SelectedRow=null;
-var TotalBooks=0;
+
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close-button");
 closeButton.addEventListener("click", toggleModal);
