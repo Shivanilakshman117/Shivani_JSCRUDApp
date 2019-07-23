@@ -101,17 +101,17 @@
     background-color:dodgerblue;
     border: none;
     color: white;
-    padding: 1em;
-    text-align: center;
+    padding: 1em 1em;
     margin: 2em 2em 2em 2em;
     display: block;
     float:left;
     font-size: 1em;
     cursor: pointer;
     border-radius: .5em;
-    width: 8em;
-    height:4em;
+    width: 6em;
+    height:auto;
     position:relative;
+    font-size: .8em;
   }
   .trigger:hover
   {
@@ -122,16 +122,17 @@
     background-color:red;
     border: none;
     color: white;
-    padding: 1em;
-    text-align: center;
-    margin: 2em;
+    padding: 1em 1em;
+    margin: 2em 2em 2em 2em;
     display: block;
     float:left;
     font-size: 1em;
     cursor: pointer;
     border-radius: .5em;
-    width:8em;
-    height:4em;
+    width: 6em;
+    height:auto;
+    position:relative;
+    font-size: .8em;
    
   }
   .DeleteMultiple:hover
