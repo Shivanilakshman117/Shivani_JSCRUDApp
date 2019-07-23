@@ -6,35 +6,36 @@ select
 }
 
 
-.pagination {
-    display: block;
-    margin:2em 8em 2em 8em;
-    
-  }
+.PageButton button {
+  background-color: rgb(13, 86, 243); /* Green background */
+  border: .1em solid rgb(10, 10, 10); /* Green border */
+  border-radius:0.2em;
+  color: white; /* White text */
+  padding:0.5em 1em;/* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  margin-top:2.5em;
   
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid #ddd;
+}
+
+/* Clear floats (clearfix hack) */
+.PageButton:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.PageButton button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+.PageButton button:first-child {
+  margin-left:20em;
   
-  }
-  
-  .pagination a.active {
-    background-color: rgb(23, 63, 194);
-    color: white;
-    border: 1px solid rgb(23, 63, 194);
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
-  
-  .pagination a:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-  
-  .pagination a:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
+ }
+ 
+
+/* Add a background color on hover */
+.PageButton button:hover {
+  background-color:  rgba(13, 86, 243, 0.89);
+}
+ 
