@@ -6,12 +6,20 @@
         <link rel="Stylesheet" type="text/css" href="CRUDStyleSheet.css">
         <link rel="Stylesheet" type="text/css" href="Pagination.css">
     </head>
-    <body onload="Prepopulate();"> 
+    <body onload="Paginate(15);"> 
         <div class= "topnav">
             <a href="Signout.html">Sign Out</a>
         </div>
         <button class="trigger" onclick="AddBooks();">Add Book</button>
         <button class="DeleteMultiple">Delete Checked</button>
+        <select id="Views" onchange="Paginate(this.value) ">
+            
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+            <option value="20">20</option>
+        
+        </select>
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span> 
@@ -53,7 +61,7 @@
             </div>
         </div>
         <table class="book" id="Book">
-            <thead>
+            <thead hidden>
                 <tr>
                     <th>S.No</th>
                     <th>Book Name</th>
@@ -98,34 +106,13 @@
                 </div>                   
             </div>
         </div>
-        <table class="book" id="BookPagination">
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Book Name</th>
-                        <th>Author</th>
-                        <th>Genre</th>
-                        <th>Rating</th>
-                        <th>Price ($)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-    
-                </tbody>
-            </table>
         <script src="CRUDScript.js"></script>
         <script src="populate.js"></script>
-        <script src="pagination.js"></script>
-        <select id="Views" onchange="Paginate(this.value);">
-            
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-            
-        </select>
-        <div class="pagination" id="Pages">
+
+        <div class="PageButton" id="DynamicButton">
+            <button id="left" onclick="LeftNav();">&laquo;</button>
+            <button id='b1' onclick="DeleteExistingRows(this.id);" value=1>1</button> 
+            <button id="right" onclick="RightNav();">&raquo;</button>
         </div>
         
     </body>
