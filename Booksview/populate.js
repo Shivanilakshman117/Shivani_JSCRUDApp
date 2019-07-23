@@ -1,4 +1,7 @@
-ExistingBookRecord = [
+var pageflag=0,startno,endno;
+
+
+BookRecord = [
     {   Sno:1, BookName:"Harry Potter and The Sorcerer's Stone", Author:"J. K. Rowling", Genre:"Fiction",Rating:4.95, Price:85},
     {	Sno:2,BookName: "The Great Alone", Author: "Kristin Hannah", Genre:"Fiction", Rating:4.33, Price:34},
     {	Sno:3,BookName: "Circe", Author: "Madeline Miller", Genre:"Fantasy", Rating:4.34, Price:40},
@@ -30,17 +33,72 @@ ExistingBookRecord = [
     {	Sno:29,BookName: "A Reaper at the Gates", Author: "Sabaa Tahir", Genre:"Fantasy", Rating:4.27, Price:97},
     {	Sno:30,BookName: "The Hazel Wood", Author: "Melissa Albert", Genre:"Fantasy", Rating:3.61, Price:92}
     ];
-    
-function Prepopulate()
-{ 
-   
-    for(i=0;i<30;i++)
-      {
-          InsertIntoTable(ExistingBookRecord[i]);
-          }
 
-  
+var NoOfPages=0;
+var TotalBooks=BookRecord.length;
+var ViewSize=0;
+function Paginate(x)
+{   var i;
+
+    //var code="<div class='Pagebutton' id='dynamicbutton'>";
+    ViewSize=x;
+    NoOfPages= Math.ceil(TotalBooks/ViewSize);
+    var mytbl = document.getElementById("Book");
+    mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML
+//document.getElementById("Pages").innerHTML=code;
+Prepopulate(1);
 }
 
+function Prepopulate(PageNo)
+{   var i;
+    endno=PageNo*ViewSize;
+    startno= (endno-ViewSize);
+  
+//alert("Popfn");
+    for(i=startno;i<endno;i++)
+    { 
+        InsertIntoTable(BookRecord[i]);
+    }
 
+}
 
+function DeleteExistingRows(ButtonId)
+{   
+    var d;
+    var mytbl = document.getElementById("Book");
+    mytbl.getElementsByTagName("tbody")[0].innerHTML = mytbl.rows[0].innerHTML;
+    mytbl.getElementsByTagName("thead")[0].innerHTML= " ";
+   // var PageNo= ButtonId.value;
+   var PageNo= document.getElementById(ButtonId).value;
+    //alert(PageNo);
+    Prepopulate(PageNo);
+    
+}
+ function LeftNav()
+ { var b1=document.getElementById("b1").value;
+   var b2=document.getElementById("b2").value;
+   var b3=document.getElementById("b3").value;
+   //alert(b1);alert(b2);alert(b3);
+     if(b1>1)
+ {document.getElementById("b1").innerHTML=b1-1;
+ document.getElementById("b1").value=b1-1;
+ document.getElementById("b2").innerHTML=b2-1;
+ document.getElementById("b2").value=b2-1;
+ document.getElementById("b3").innerHTML=b3-1;
+ document.getElementById("b3").value=b3-1;
+ }
+ }
+ function RightNav()
+ {  var b1=document.getElementById("b1").value;
+    var b2=document.getElementById("b2").value;
+    var b3=document.getElementById("b3").value;
+    
+     if(b1<NoOfPages-2)
+ {document.getElementById("b1").innerHTML=b1+1;
+ document.getElementById("b1").value=b1+1;
+ document.getElementById("b2").innerHTML=b2+1;
+ document.getElementById("b2").value=b2+1;
+ document.getElementById("b3").innerHTML=b3+1;
+ document.getElementById("b3").value=b3+1;
+ }
+ }
