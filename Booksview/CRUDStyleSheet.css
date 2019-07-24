@@ -64,7 +64,7 @@
   }
   div.booksform {
     border-radius: .4em;
-    background-color: #f2f2f2;
+    background-color: #f2f2f200;
     padding: 1.2em .8em;
     width:80%;
     height:auto;
@@ -76,17 +76,16 @@
     margin-left:auto;
     margin-right:auto;
     clear:both;
+    box-shadow:0 .2em .2em .2em #f7f3f3;
   }
   
   .book td, .book th {
-    border: .1em solid #ddd;
+    border: .1em solid dodgerblue;
     padding: .2em;
-  
     max-width:15em;
   }
   
-  .book tr:nth-child(even){background-color: #f2f2f2;}
-   
+     
   .book th {
     padding-top: 0.4em;
     padding-bottom: .6em;
@@ -95,54 +94,98 @@
     color: white;
     
   }
+  #BookInfo {
+    border:none;
+    width: 85%;
+    margin-left:auto;
+    margin-right:auto;
+    clear:both;
+  }
+  #BookInfo td{
+    
+    padding: .2em;
+    max-width:25em;
+  }
  
   .trigger
   {
-    background-color:dodgerblue;
+    background-color:green;
     border: none;
     color: white;
-    padding: 1em 1em;
-    margin: 2em 2em 2em 2em;
+    padding: .5em .5em;
+    margin: 2em 2em 2em 8em;
     display: block;
     float:left;
     font-size: 1em;
     cursor: pointer;
     border-radius: .5em;
     width: 6em;
-    height:auto;
+    height:3em;
     position:relative;
     font-size: .8em;
   }
   .trigger:hover
   {
-    background-color:rgb(21, 121, 221);
+    background-color:rgb(3, 92, 3);
   }
   .DeleteMultiple
   {
     background-color:red;
     border: none;
     color: white;
-    padding: 1em 1em;
-    margin: 2em 2em 2em 2em;
+    padding: .5em .5em;
+    margin: 2em 2em 2em 20em;
     display: block;
     float:left;
     font-size: 1em;
     cursor: pointer;
     border-radius: .5em;
     width: 6em;
-    height:auto;
+    height:3.2em;
     position:relative;
     font-size: .8em;
-   
   }
+   
+  
   .DeleteMultiple:hover
   {
-    background-color:rgb(236, 9, 9);
+    background-color:rgb(173, 6, 6);
   }
+  #SearchInput{
+    border-top:thin solid  #e5e5e5;
+    border-right:thin solid #e5e5e5;
+    border-bottom:0;
+    border-left:thin solid  #e5e5e5;
+    box-shadow:0px 1px 1px 1px #e5e5e5;
+    float:right;
+    height:3.8em;
+    margin: 2em 10em 2em 0em;
+    
+    outline:0;
+    padding:.4em 0 .4em .6em; 
+    width:183px; 
+}
+  
+#SearchIcon{
+    background-color:white;
+    margin:2em 0em 2em 2em;
+    float:right;
+    height:3em;
+
+    text-align:center;
+    width:3em;
+
+}
+  
+#SearchIcon img{
+    margin:4px;
+    width:2em; 
+}
+  
      
   .EditButton
   {
-    background-color:rgba(0, 68, 255, 0.89);
+    background-color:orange;
     border: none;
     color: white;
     padding: .4em;
@@ -154,6 +197,10 @@
     cursor: pointer;
     border-radius: .25em;
     width: 5em;
+  }
+  .EditButton:hover
+  {
+    background-color:rgb(228, 149, 2);
   }
        
   .DeleteButton
@@ -171,6 +218,10 @@
     border-radius: .25em;
     width: 5em;
   }
+  .DeleteButton:hover
+  {
+    background-color:rgba(202, 41, 1, 0.938);
+  }
 
   .MoreButton
   {
@@ -187,7 +238,10 @@
     border-radius: .25em;
     width: 5em;
   }
-  
+  .MoreButton:hover
+  {
+    background-color:rgba(1, 120, 255, 0.938);
+  }
   
   .modal {
     position: fixed;
@@ -200,6 +254,7 @@
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 1;
 }
 .modal-content {
     position: absolute;
@@ -220,6 +275,7 @@
     cursor: pointer;
     border-radius: .4em;
     background-color:rgba(255, 52, 1, 0.938);
+    color:white;
 }
 .close-button:hover {
     background-color:rgba(255, 52, 1, 0.938);
@@ -241,6 +297,8 @@
   visibility: hidden;
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 1;
+
 }
 .infomodal-content {
   position: absolute;
@@ -250,7 +308,9 @@
   background-color: white;
   padding: 20px;
   width:50%;
+  height:auto;
   border-radius: 0.5rem;
+  
 }
 .close-button2 {
   float: right;
@@ -258,8 +318,9 @@
   line-height: 1.5em;
   text-align: center;
   cursor: pointer;
-  border-radius: 1em;
+  border-radius: .4em;
   background-color:rgba(255, 52, 1, 0.938);
+  color:white;
 }
 .close-button2:hover {
   background-color:rgba(255, 52, 1, 0.938);
@@ -282,3 +343,11 @@
     font-size:.8em;
   }
 
+
+  #Booksperpage
+  {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+   margin-left:20%;    
+  }
