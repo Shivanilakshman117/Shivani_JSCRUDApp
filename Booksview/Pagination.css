@@ -1,20 +1,27 @@
 select
 {
-  margin:2em 8em 2em 8em;
-  display: block;
+  background-color: rgba(13, 159, 243, 0); 
+  border: .1em solid rgb(14, 13, 13); /* Green border */
+  border-radius:0.2em;
+  color: black; /* White text */
+  padding:0.5em 1em;/* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  margin:.2em;
   
 }
 
 
 .PageButton button {
-  background-color: rgb(13, 86, 243); /* Green background */
-  border: .1em solid rgb(10, 10, 10); /* Green border */
+  background-color: rgba(13, 159, 243, 0); /* Green background */
+  border: .1em solid rgb(14, 13, 13); /* Green border */
   border-radius:0.2em;
-  color: white; /* White text */
+  color: black; /* White text */
   padding:0.5em 1em;/* Some padding */
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
-  margin-top:2.5em;
+  margin:.2em;
+ 
   
 }
 
@@ -25,17 +32,39 @@ select
   display: table;
 }
 
-.PageButton button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-.PageButton button:first-child {
-  margin-left:20em;
-  
- }
  
 
 /* Add a background color on hover */
 .PageButton button:hover {
-  background-color:  rgba(13, 86, 243, 0.89);
+  background-color:  rgba(146, 155, 155, 0.411);
 }
  
+#GotoInput{
+  border-top:thin solid  #e5e5e5;
+  border-right:thin solid #e5e5e5;
+  border-bottom:0;
+  border-left:thin solid  #e5e5e5;
+  box-shadow:0px 1px 1px 1px #e5e5e5;
+  float:left;
+  height:auto;
+  
+ 
+  outline:0;
+  padding:.4em 0 .4em .6em; 
+  width:40%;
+}
+#PaginationElements {
+  border:none;
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  clear:both;
+  
+
+}
+
+#PaginationElements td{
+ 
+  padding: .2em;
+  max-width:15em;
+}
