@@ -8,29 +8,21 @@
     </head>
     <body onload="Paginate(15);"> 
         <div class= "topnav">
-            <a href="Signout.html">Sign Out</a>
+            <a href="../index.html">Sign Out</a>
         </div>
         <button class="trigger" onclick="AddBooks();">Add Book</button>
-        <button class="DeleteMultiple">Delete Checked</button>
-        <select id="Views" onchange="Paginate(this.value) ">
-            
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15" selected>15</option>
-            <option value="20">20</option>
         
-        </select>
+        <input type="text" id="SearchInput" onkeyup="Search()"  autocomplete="off" placeholder="Search by book name" title="Type in a bookname">
+        <div id='SearchIcon'>
+                <img src='searchicon.png' />
+        </div>
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span> 
                 <div class="booksform" id="popform">
                     <form onsubmit = "event.preventDefault();" autocomplete="off"> <!-- id is added to facilitate js functions.prevent default
                     stops suggestions from cache-->
-                        <div>
-                            <label>S.no</label><br>
-                            <input type="number" name = "Sno" id="Sno" value="" disabled>
-
-                        </div>  
+ 
                         <div>
                             <label>Book Name</label><br>
                             <input type="text" name = "BookName" id="BookName">
@@ -45,12 +37,12 @@
                         </div>
                         <div>
                             <label>Rating</label><br>
-                            <input type="number" name = "Rating" id="Rating" >
+                            <input type="number" name = "Rating" id="Rating" placeholder="Rate from 1 to 5">
                             <p id="RatingError"></p>
                         </div>
                         <div>
                             <label>Price</label><br>
-                            <input type="number" name = "Price" id="Price" >
+                            <input type="number" name = "Price" id="Price" placeholder="MRP from 10 to 100">
                             <p id="PriceError"></p>
                         </div>  
                         <div>
@@ -63,7 +55,7 @@
         <table class="book" id="Book">
             <thead hidden>
                 <tr>
-                    <th>S.No</th>
+                    <th>Select</th>
                     <th>Book Name</th>
                     <th>Author</th>
                     <th>Genre</th>
@@ -79,41 +71,68 @@
         <div class="infomodal">
             <div class="infomodal-content">
                 <span class="close-button2">&times;</span>
-                <div>
-                    <h3>Book Name:</h3>
-                    <p id="BookName2"></p>
-                    <br>
-                </div>
-                <div>
-                    <h3>Author:</h3>
-                    <p id="Author2"></p>
-                    <br>
-                </div>
-                <div>
-                    <h3>Genre:</h3>
-                    <p id="Genre2"></p>
-                    <br>
-                </div>
-                <div>
-                    <h3>Rating:</h3>
-                    <p id="Rating2"></p>
-                    <br>                  
-                </div>
-                <div>
-                    <h3>Price:</h3>
-                    <p id="Price2"></p>
-                    <br>
-                </div>                   
+                <table id="BookInfo">
+                    <tr>
+                    <td><b>Book Name</b></td>
+                    <td id="BookName2">:</td>
+                    </tr>
+                    <tr>
+                        <td><b>Author</b></td>
+                        <td id="Author2">:</td>
+                    </tr>
+                    <tr>
+                        <td><b>Genre</td></b></td>
+                        <td id="Genre2">:</td>
+                    </tr>
+                    <tr>
+                        <td><b>Rating</b></td>
+                        <td id="Rating2">:</td>
+                    </tr>                  
+                    <tr>
+                        <td><b>Price($)</b></td>
+                        <td id="Price2">:</td>
+                    </tr>
+                </table>               
             </div>
         </div>
         <script src="CRUDScript.js"></script>
         <script src="populate.js"></script>
+        <table id="PaginationElements">
+            <tr>
+                <td>
+                    <button class="DeleteMultiple" onclick="DeleteCheckedBooks();">Delete Checked</button>
+                </td>
+                <td>
+                    View
+                </td>
+                <td>
+                    <select id="Views" onchange="Paginate(this.value) ">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15" selected>15</option>
+                    <option value="20">20</option>      
+                    </select> 
+                    
+                </td>
+                <td>
+                    books per page 
+                </td>
+                <td>
+                    <input type="number" id="GotoInput" onkeyup="Search()"  autocomplete="off" placeholder="Goto Page" title="Type in a Page Number">
+                </td>
+                <td>
+                    <div class="PageButton" id="DynamicButton">
+                        <button id="LeftButton" onclick="LeftNav(document.getElementById('b1').value);">&laquo;</button>
+                        <button id='b1' value=1 disabled>1</button> 
+                        <button id="RightButton" onclick="RightNav(document.getElementById('b1').value);">&raquo;</button>
+                    </div>
+                </td>
+            </tr>
 
-        <div class="PageButton" id="DynamicButton">
-            <button id="left" onclick="LeftNav();">&laquo;</button>
-            <button id='b1' onclick="DeleteExistingRows(this.id);" value=1>1</button> 
-            <button id="right" onclick="RightNav();">&raquo;</button>
-        </div>
+        </table>    
+           
+
+     
         
     </body>
 </html>
