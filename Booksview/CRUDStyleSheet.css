@@ -36,7 +36,7 @@
   
   input[type=text], input[type=number]
   {
-    width: 80%;
+    width: 100%;
     padding: 0.5em;
     margin: .5em 1em;
     display: inline-block;
@@ -47,8 +47,8 @@
   }
   
   input[type=submit] {
-    width: 80%;
-    background-color: orange;
+    width: auto;
+    background-color: green;
     color: white;
     padding: 0.5em;
     display: inline-block;
@@ -60,13 +60,13 @@
   }
   
   input[type=submit]:hover:not(disabled) {
-    background-color:green;
+    background-color:rgb(1, 95, 1);
   }
   div.booksform {
     border-radius: .4em;
     background-color: #f2f2f200;
     padding: 1.2em .8em;
-    width:80%;
+    width:90%;
     height:auto;
     position: relative;
   }
@@ -127,6 +127,65 @@
   .trigger:hover
   {
     background-color:rgb(3, 92, 3);
+  }
+  .Undo
+  {
+    background-color:orange;
+    border: none;
+    color: white;
+    padding: .5em .5em;
+    margin: 2em 8em 2em 2em;
+    display: block;
+    float:right;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .5em;
+    width: 6em;
+    height:3em;
+    position:relative;
+    font-size: .8em;
+  }
+  #CancelDelete
+  {
+    background-color:red;
+    border: none;
+    color: white;
+    padding: .5em .5em;
+    margin: 2em 2em 2em 2em;
+    display: block;
+    float:left;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .5em;
+    width: 4em;
+    height:3em;
+    position:relative;
+    font-size: .8em;
+  }
+  #DeleteBook
+  {
+    background-color:dodgerblue;
+    border: none;
+    color: white;
+    padding: .5em .5em;
+    margin: 2em 2em 2em 2em;
+    display: block;
+    float:left;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .5em;
+    width: 4em;
+    height:3em;
+    position:relative;
+    font-size: .8em;
+  }
+  .Undo:hover
+  {
+    background-color:rgb(252, 123, 2);
+  }
+  .Undo:disabled
+  {
+    background-color:rgba(131, 125, 120, 0.747);
   }
   .DeleteMultiple
   {
@@ -263,22 +322,26 @@
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    width:30%;
+    width:auto;
     height:auto;
     border-radius: 0.5rem;
 }
 .close-button {
-    float: right;
-    width: 1.5em;
-    line-height: 1.5em;
-    text-align: center;
-    cursor: pointer;
-    border-radius: .4em;
-    background-color:rgba(255, 52, 1, 0.938);
-    color:white;
+  width: auto;
+  background-color:red;
+  color: white;
+  padding: 0.5em;
+  display: inline-block;
+  margin: .5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position:relative;
+  font-size:.8em;
+  height:auto;
 }
 .close-button:hover {
-    background-color:rgba(255, 52, 1, 0.938);
+    background-color:rgb(172, 2, 2);
 }
 .show-modal {
     opacity: 1;
@@ -332,7 +395,53 @@
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-#RatingError, #PriceError
+.DeleteModal1 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 1;
+
+}
+.DeleteModal1-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width:30%;
+  height:auto;
+  border-radius: 0.5rem;
+}
+
+.show-DeleteModal1 {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.close-button3 {
+  float: right;
+  width: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  cursor: pointer;
+  border-radius: .4em;
+  background-color:rgba(255, 52, 1, 0.938);
+  color:white;
+}
+.close-button3:hover {
+  background-color:rgba(255, 52, 1, 0.938);
+}
+
+.errormsg
 {
   font-size: .8em;
   color:red;
