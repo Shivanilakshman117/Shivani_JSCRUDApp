@@ -32,10 +32,14 @@ select
   display: table;
 }
 
+.PageButton:disabled {
+background-color: black;
+}
+
  
 
 /* Add a background color on hover */
-.PageButton button:hover {
+.PageButton button:hover:not([disabled]) {
   background-color:  rgba(146, 155, 155, 0.411);
 }
  
@@ -67,4 +71,17 @@ select
  
   padding: .2em;
   max-width:15em;
+}
+#GotoInputsubmit
+{
+  width: 5em;
+  background-color:dodgerblue;
+  color: white;
+  padding: 0.5em;
+  display: inline-block;
+  margin: .5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position:relative;
 }
