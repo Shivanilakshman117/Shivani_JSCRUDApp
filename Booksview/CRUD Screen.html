@@ -12,17 +12,23 @@
     <div class="topnav">
         <a href="../index.html">Sign Out</a>
     </div>
-    <button class="trigger" onclick="AddBooks();">Add Book</button>
-    <button class="Undo" onclick="UndoDelete();" disabled id="UndoButton">Undo</button>
-
-    <input type="text" id="SearchInput" onkeyup="Search()" autocomplete="off" placeholder="Search by book name"
-        title="Type in a bookname">
-    <div id='SearchIcon'>
-        <img src='searchicon.png' />
+    <div id="RowAlign">
+        <button class="trigger" onclick="AddBooks();">Add Book</button>
+        <button class="Undo" onclick="UndoDelete();" disabled id="UndoButton">Undo</button>
+        <div id='SearchIcon'>
+            <img src='searchicon.png' />
+        </div>
+        <input type="text" id="SearchInput" onkeyup="Search()" autocomplete="off" placeholder="Search here by">
+        <select id="SearchOptions">
+            <option value="BookName" selected>BookName</option>
+            <option value="Author">Author</option>
+            <option value="Genre">Genre</option>
+        </select>
+        <button class="DeleteMultiple" onclick="DeleteCheckedBooks();">Delete Checked</button>
     </div>
     <div class="modal">
         <div class="modal-content">
-            
+
             <div class="booksform" id="popform">
                 <form onsubmit="event.preventDefault();" autocomplete="off">
                     <!-- id is added to facilitate js functions.prevent default
@@ -67,9 +73,11 @@
                 <th>Book Name</th>
                 <th>Author</th>
                 <th>Genre</th>
-                <th>Rating</th>
-                <th>Price ($)</th>
-                <th>Action</th>
+                <div id="HideWhenSmall">
+                    <th>Rating</th>
+                    <th>Price ($)</th>
+                    <th>Action</th>
+                </div>
             </tr>
         </thead>
         <tbody>
@@ -103,50 +111,31 @@
             </table>
         </div>
     </div>
+    
 
- 
-    <table id="PaginationElements">
-        <tr>
-            <td>
-                <button class="DeleteMultiple" onclick="DeleteCheckedBooks();">Delete Checked</button>
-            </td>
-            <td>
-                View
-            </td>
-            <td>
-                <select id="Views" onchange="Paginate(this.value) ">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15" selected>15</option>
-                    <option value="20">20</option>
-                </select>
-
-            </td>
-            <td>
-                books per page
-            </td>
-            <td>
-                <input type="number" id="GotoInput" autocomplete="off" placeholder="Goto Page"
-                    title="Type in a Page Number">
-                <input type="submit" id="GotoInputsubmit" onclick="GotoPage();" value="Go">
-            </td>
-            <td>
-                <div class="PageButton" id="DynamicButton">
-                    <button id="LeftButton" onclick="LeftNav(document.getElementById('b1').value);" disabled>&laquo;</button>
-                    <button id='b1' value=1 disabled>1</button>
-                    <button id="RightButton" onclick="RightNav(document.getElementById('b1').value);">&raquo;</button>
-                </div>
-            </td>
-        </tr>
-
-    </table>
+    <div id="RowAlign">
+        View
+        <select id="Views" onchange="Paginate(this.value) ">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+            <option value="20">20</option>
+        </select>
+        books per page
+        <input type="number" id="GotoInput" autocomplete="off" placeholder="Goto Page" title="Type in a Page Number">
+        <input type="submit" id="GotoInputsubmit" onclick="GotoPage();" value="Go">
+        <div class="PageButton" id="DynamicButton">
+            <button id="LeftButton" onclick="LeftNav(document.getElementById('b1').value);" disabled>&larr;</button>
+            <button id='b1' value=1 disabled>1</button>
+            <button id="RightButton" onclick="RightNav(document.getElementById('b1').value);">&rarr;</button>
+        </div>
+    </div>
     <div class="DeleteModal1">
         <div class="DeleteModal1-content">
             <div>
                 <p>Are you sure you want to delete?</p>
                 <input type="submit" id="DeleteBook" value="Yes" onclick="DeleteBook();">
                 <input type="submit" id="CancelDelete" value="No" onclick="toggleDeleteModal1();">
-
             </div>
         </div>
     </div>
