@@ -14,8 +14,8 @@ var row = {};
 
 
 function AddBooks() {
-    document.getElementsByClassName("errormsg").innerHTML = " ";
-    ResetForm();
+   
+   
     var BookRecord;
     modal.classList.toggle("show-modal");
 
@@ -43,7 +43,6 @@ function ReadBook() {
         SelectedRow = null;
     }
     ResetForm();
-    document.getElementsByClassName("errormsg").innerHTML = " ";
     
 
 }
@@ -75,8 +74,8 @@ function ResetForm() {
     document.getElementById("BookName").value = " ";
     document.getElementById("Author").value = " ";
     document.getElementById("Genre").value = " ";
-    document.getElementById("Rating").value = null;
-    document.getElementById("Price").value = null;
+    document.getElementById("Rating").value = 0;
+    document.getElementById("Price").value = 0;
     document.getElementsByClassName("errormsg").innerHTML = " ";
     SelectedRow = null;
 }
@@ -188,7 +187,7 @@ function Validate() {
         document.getElementById("Rating").innerHTML = document.getElementById("Rating").value;
         document.getElementById("Price").innerHTML = document.getElementById("Price").value;
     }
-}
+  }
 
 function UndoDelete() {
     BookRecord.splice(RowIndex, 0, UndoObj);
@@ -197,6 +196,7 @@ function UndoDelete() {
 }
 
 function toggleModal() {
+    document.getElementsByClassName("errormsg").innerHTML = " ";
     modal.classList.toggle("show-modal");
     document.getElementsByClassName("errormsg").innerHTML = " ";
     ResetForm();
