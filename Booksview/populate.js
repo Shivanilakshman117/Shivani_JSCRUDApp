@@ -62,7 +62,7 @@ function Prepopulate(b1) {
 
 function LeftNav(id) {
   b1 = parseInt(id);
-  var b3=b1;
+  var b3 = b1;
   document.getElementById("RightButton").disabled = false;
 
   if (b1 > 1) {
@@ -72,7 +72,7 @@ function LeftNav(id) {
     document.getElementById("b1").value = b1 - 1;
     Prepopulate(b1 - 1);
   }
-  if ((b3-1)== 1) {
+  if ((b3 - 1) == 1) {
     document.getElementById("LeftButton").disabled = true;
   }
 }
@@ -80,7 +80,7 @@ function LeftNav(id) {
 
 function RightNav(id) {
   b1 = parseInt(id);
-  var b2=b1;
+  var b2 = b1;
   document.getElementById("LeftButton").disabled = false;
   if (b1 < NoOfPages) {
 
@@ -97,25 +97,59 @@ function RightNav(id) {
 
 }
 
-
 function Search() {
-  var input, filter, table, tr, td, i, txtValue;
+ 
+  var input, filter, table, tr, td, i, txtValue, searchoption;
   input = document.getElementById("SearchInput");
+  searchoption = document.getElementById("SearchOptions").value;
+  //alert(searchoption);
   filter = input.value.toUpperCase();
   table = document.getElementById("Book");
   tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+  if (searchoption == "BookName") {
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  else if (searchoption == "Author") {
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  else if (searchoption == "Genre") {
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[3];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
       }
     }
   }
 }
+
 
 function GotoPage(key) {
   var P = parseInt(document.getElementById("GotoInput").value);
