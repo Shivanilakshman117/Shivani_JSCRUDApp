@@ -17,6 +17,7 @@ function AddBooks() {
    
    
     var BookRecord;
+    document.getElementsByTagName("span").innerHTML = " ";
     modal.classList.toggle("show-modal");
 
 }
@@ -32,7 +33,8 @@ function ReadBook() {
     UserBook["Price"] = document.getElementById("Price").value;
 
     if (SelectedRow == null) {
-        BookRecord.push(UserBook);
+        BookRecord.unshift(UserBook);
+        Paginate(document.getElementById("Views").value);
         if (Math.ceil(BookRecord.length / ViewSize) > NoOfPages) {
             NoOfPages = Math.ceil(BookRecord.length / ViewSize);
             document.getElementById("RightButton").disabled = false;
@@ -74,9 +76,13 @@ function ResetForm() {
     document.getElementById("BookName").value = " ";
     document.getElementById("Author").value = " ";
     document.getElementById("Genre").value = " ";
-    document.getElementById("Rating").value = 0;
-    document.getElementById("Price").value = 0;
-    document.getElementsByClassName("errormsg").innerHTML = " ";
+    document.getElementById("Rating").value = " ";
+    document.getElementById("Price").value = " ";
+    document.getElementById("BookError").innerText = " ";
+    document.getElementById("AuthorError").innerText = " ";
+    document.getElementById("PriceError").innerText = " ";
+    document.getElementById("RatingError").innerText = " ";
+
     SelectedRow = null;
 }
 
@@ -152,33 +158,35 @@ function DeleteCheckedBooks() {
 
 
 function Validate() {
-    var flag = 0;
+   var flag=0;
     var r = parseInt(document.getElementById("Rating").value);
     var p = parseInt(document.getElementById("Price").value);
     var b = document.getElementById("BookName").value;
     var a = document.getElementById("Author").value;
-    document.getElementsByClassName("errormsg").innerHTML = " ";
-    if (r < 0 || r > 5) {
+     if (b.length==0) {
+
         flag = 1;
-        document.getElementById("RatingError").innerHTML = "Rating must be on scale of 1-5";
+         document.getElementById("BookError").innerHTML = "*Required Field";
     }
-    
+  
+    if (a.length==0) {
+        flag = 1;
+        document.getElementById("AuthorError").innerHTML = "*Required Field";
+    }
+
     if (p < 10 || p > 100) {
         flag = 1;
         document.getElementById("PriceError").innerHTML = "*Price must be between 10 and 100";
     }
-    if (a==" ") {
+    if (r < 0 || r > 5) {
         flag = 1;
-        document.getElementById("AuthorError").innerHTML = "*Required Field";
+        document.getElementById("RatingError").innerHTML = "Rating must be on scale of 1-5";
     }
-    if (b==" ") {
-        flag = 1;
-        document.getElementById("NameError").innerHTML = "*Required Field";
-    }
-
-    if (flag == 0) {   
+    if (flag == 0) {  
+        
         document.getElementsByClassName("errormsg").innerHTML = " ";
         ReadBook();
+     
     }
     else {
         document.getElementById("BookName").innerHTML = document.getElementById("BookName").value;
