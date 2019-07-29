@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> CRUD App</title>
     <link rel="Stylesheet" type="text/css" href="CRUDStyleSheet.css">
-    <link rel="Stylesheet" type="text/css" href="Pagination.css">
+   
 </head>
 
 <body onload="Paginate(15);">
@@ -37,12 +37,12 @@
                     <div>
                         <label>Book Name</label><br>
                         <input type="text" name="BookName" id="BookName">
-                        <p class="errormsg" id="NameError"></p>
+                        <span class="errormsg" id="NameError"> </span>
                     </div>
                     <div>
                         <label>Author</label><br>
-                        <input type="text" name="Author" id="Author">
-                        <p class="errormsg" id="AuthorError"></p>
+                        <input type="text" name="Author" id="Author" >
+                        <span class="errormsg" id="AuthorError"> </span>
                     </div>
                     <div>
                         <label>Genre</label><br>
@@ -50,16 +50,16 @@
                     </div>
                     <div>
                         <label>Rating</label><br>
-                        <input type="number" name="Rating" id="Rating" placeholder="Rate from 1 to 5">
-                        <p class="errormsg" id="RatingError"></p>
+                        <input type="number" name="Rating" id="Rating" placeholder="Rate from 1 to 5" >
+                        <span class="errormsg" id="RatingError"> </span>
                     </div>
                     <div>
                         <label>Price($)</label><br>
-                        <input type="number" name="Price" id="Price" placeholder="MRP from 10 to 100">
-                        <p class="errormsg" id="PriceError"></p>
+                        <input type="number" name="Price" id="Price" placeholder="MRP from 10 to 100" >
+                        <span class="errormsg" id="PriceError"> </span>
                     </div>
                     <div>
-                        <input type="submit" value="Done" onclick="Validate();" id="subbutton">
+                        <input type="submit" value="Done" onclick="Validate();" id="subbutton" >
                         <span class="close-button">Cancel</span>
                     </div>
                 </form>
@@ -73,11 +73,9 @@
                 <th>Book Name</th>
                 <th>Author</th>
                 <th>Genre</th>
-                <div id="HideWhenSmall">
-                    <th>Rating</th>
-                    <th>Price ($)</th>
-                    <th>Action</th>
-                </div>
+                <th>Rating</th>
+                <th>Price ($)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -115,7 +113,7 @@
 
     <div id="RowAlign">
         View
-        <select id="Views" onchange="Paginate(this.value) ">
+        <select id="Views" onchange="Paginate(this.value)">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15" selected>15</option>
