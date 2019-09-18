@@ -130,7 +130,7 @@ function DeleteBook() {
     view = document.getElementById("Views").value;
     undoIndex= row.rowIndex*page;
     insertAt= ((view*(page-1))+undoIndex);
-    alert(insertAt);
+    
     localStorage.setItem("BookName", row.cells[1].innerHTML);
     localStorage.setItem("Author", row.cells[2].innerHTML);
     localStorage.setItem("Genre", row.cells[3].innerHTML);
@@ -232,7 +232,7 @@ function UndoDelete() {
     
     var undorec = {"BookName": localStorage.getItem("BookName"),"Author":localStorage.getItem("Author"),
     "Genre":localStorage.getItem("Genre"),"Rating":localStorage.getItem("Rating"),"Price":localStorage.getItem("Price")}
-    alert(insertAt-2);
+
     BookRecord.splice(insertAt-2, 0, undorec);
     document.getElementById("UndoButton").disabled = true;
     localStorage.clear();
