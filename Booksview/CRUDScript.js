@@ -7,15 +7,20 @@ var infomodal = document.querySelector(".infomodal");
 var closeButton2 = document.querySelector(".close-button2");
 closeButton2.addEventListener("click", toggleinfoModal);
 
-window.addEventListener("click", windowOnClick);
+
 var UndoObj = {};
 var RowIndex;
 var row = {};
+var page;
+var view;
+var undoIndex;
+var insertAt;
+
 
 
 function AddBooks() {
-   
-   
+
+
     var BookRecord;
     document.getElementsByTagName("span").innerHTML = " ";
     modal.classList.toggle("show-modal");
@@ -40,12 +45,15 @@ function ReadBook() {
             document.getElementById("RightButton").disabled = false;
         }
     }
-    else {
+    else { var updatepage=document.getElementById("b1").innerHTML
+        var updateIndex= SelectedRow.rowIndex*updatepage;
+        var updateview= document.getElementById("Views").value;
+        var updateAt= ((updateview*(updatepage-1))+updateIndex);
+        BookRecord.splice(updateAt-2, 1, UserBook);
         UpdateRecord(UserBook);
         SelectedRow = null;
     }
     ResetForm();
-    
 
 }
 
@@ -100,7 +108,7 @@ function Edit(td) {
 
 function UpdateRecord(BookRecord) {
 
-    //SelectedRow.cells[0].innerHTML= BookRecord.Sno;
+
     SelectedRow.cells[1].innerHTML = BookRecord.BookName;
     SelectedRow.cells[2].innerHTML = BookRecord.Author;
     SelectedRow.cells[3].innerHTML = BookRecord.Genre;
@@ -109,21 +117,34 @@ function UpdateRecord(BookRecord) {
 }
 
 function Delete(td) {
-    //alert(DeleteModal1);
+
     DeleteModal1.classList.toggle("show-DeleteModal1");
     row = td.parentElement.parentElement;
+
 
 
 }
 function DeleteBook() {
 
+    page = document.getElementById("b1").innerHTML;
+    view = document.getElementById("Views").value;
+    undoIndex= row.rowIndex*page;
+    insertAt= ((view*(page-1))+undoIndex);
+    alert(insertAt);
+    localStorage.setItem("BookName", row.cells[1].innerHTML);
+    localStorage.setItem("Author", row.cells[2].innerHTML);
+    localStorage.setItem("Genre", row.cells[3].innerHTML);
+    localStorage.setItem("Rating", row.cells[4].innerHTML);
+    localStorage.setItem("Price", row.cells[5].innerHTML);
+   
     document.getElementById("Book").deleteRow(row.rowIndex);
-    BookRecord.splice(row, 1);
-    UndoObj = row;
-    RowIndex = row.rowIndex;
+ 
+    BookRecord.splice(insertAt-2, 1);
+
     document.getElementById("UndoButton").disabled = false;
     ResetForm();
     DeleteModal1.classList.toggle("show-DeleteModal1");
+
 }
 
 function Info(td) {
@@ -136,21 +157,30 @@ function Info(td) {
     document.getElementById("Rating2").innerHTML = SelectedRow.cells[4].innerHTML;
     document.getElementById("Price2").innerHTML = SelectedRow.cells[5].innerHTML;
 }
+
 function DeleteCheckedBooks() {
-    alert("Do you want to delete all checked books?");
+    alert("Do you want to permanently delete all checked books?");
     var table = document.getElementById("Book");
     var chkbox;
     var rowCount = table.rows.length;
-    document.getElementById("UndoButton").disabled = false;
+
+    document.getElementById("UndoButton").disabled = true;
     for (i = 1; i <= rowCount; i++) /* i is 1 because i=0 points to the thead*/ {
         var row = table.rows[i];
         chkbox = row.cells[0].childNodes[0];
         if (chkbox != null && chkbox.checked == true) {
+            page = document.getElementById("b1").innerHTML;
+            view = document.getElementById("Views").value;
+            undoIndex= row.rowIndex*page;
+            insertAt= ((view*(page-1))+undoIndex);
+            BookRecord.splice(insertAt-2, 1);
             table.deleteRow(i);
             rowCount--;
             i--;
 
         }
+
+     
     }
 
 
@@ -158,48 +188,55 @@ function DeleteCheckedBooks() {
 
 
 function Validate() {
-   var flag=0;
+    var flag = 0;
+    var errmsg = "*Required Field";
     var r = parseInt(document.getElementById("Rating").value);
     var p = parseInt(document.getElementById("Price").value);
     var b = document.getElementById("BookName").value;
     var a = document.getElementById("Author").value;
-     if (b.length==0) {
+    if (b.length == 0) {
 
         flag = 1;
-         document.getElementById("BookError").innerHTML = "*Required Field";
-    }
-  
-    if (a.length==0) {
-        flag = 1;
-        document.getElementById("AuthorError").innerHTML = "*Required Field";
+        document.getElementById("BookError").innerHTML = errmsg;
     }
 
-    if (p < 10 || p > 100) {
+    if (a.length == 0) {
+        flag = 1;
+        document.getElementById("AuthorError").innerHTML = errmsg;
+    }
+
+    if (p < 10 || p > 100 || isNaN(p)) {
         flag = 1;
         document.getElementById("PriceError").innerHTML = "*Price must be between 10 and 100";
     }
-    if (r < 0 || r > 5) {
+    if (r < 0 || r > 5 || isNaN(r)) {
         flag = 1;
         document.getElementById("RatingError").innerHTML = "Rating must be on scale of 1-5";
     }
-    if (flag == 0) {  
-        
+    if (flag == 0) {
+
         document.getElementsByClassName("errormsg").innerHTML = " ";
         ReadBook();
-     
+
     }
-    else {
+    else if (flag == 1) {
         document.getElementById("BookName").innerHTML = document.getElementById("BookName").value;
         document.getElementById("Author").innerHTML = document.getElementById("Author").value;
         document.getElementById("Genre").innerHTML = document.getElementById("Genre").value;
         document.getElementById("Rating").innerHTML = document.getElementById("Rating").value;
         document.getElementById("Price").innerHTML = document.getElementById("Price").value;
     }
-  }
+}
 
 function UndoDelete() {
-    BookRecord.splice(RowIndex, 0, UndoObj);
-    location.reload();
+    
+    var undorec = {"BookName": localStorage.getItem("BookName"),"Author":localStorage.getItem("Author"),
+    "Genre":localStorage.getItem("Genre"),"Rating":localStorage.getItem("Rating"),"Price":localStorage.getItem("Price")}
+    alert(insertAt-2);
+    BookRecord.splice(insertAt-2, 0, undorec);
+    document.getElementById("UndoButton").disabled = true;
+    localStorage.clear();
+    Paginate(view);
 
 }
 
@@ -208,7 +245,7 @@ function toggleModal() {
     modal.classList.toggle("show-modal");
     document.getElementsByClassName("errormsg").innerHTML = " ";
     ResetForm();
-    
+
 }
 function toggleinfoModal() {
 
@@ -217,15 +254,4 @@ function toggleinfoModal() {
 function toggleDeleteModal1() {
 
     DeleteModal1.classList.toggle("show-DeleteModal1");
-}
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-    else if (event.target === infomodal) {
-        toggleinfoModal();
-    }
-    else if (event.target === DeleteModal1) {
-        toggleDeleteModal1();
-    }
 }
